@@ -38,6 +38,22 @@ step2_graymap.addTo(map_object);
 let tectonic_Data = new L.LayerGroup();
 let earthquake_Data = new L.LayerGroup();
 
+let baseMaps = {
+    Grayscale: step2_graymap,
+    Sattelite: step2_satellitemap,
+    Outdoors: step2_outdoormap
+};
+
+let overlays = {
+    "Tectonic Plates": tectonic_Data,
+    Earthquakes: earthquake_Data
+};
+
+L
+    .control
+    .layers(baseMaps, overlays)
+    .addTo(map_object);
+
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson", function(data) {
     
     function styleData(feature) {
@@ -92,7 +108,9 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
                 + feature.properties.place
             );
         }
-    }).addTo(map_object);
+    }).addTo(earthquake_Data);
+
+    earthquake_Data.addTo(map.object);
 
     let map_legend = L.control({
         position: "bottomright"
@@ -111,13 +129,27 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
             "#ba1212"
         ];
 
-    for (var i = 0; i < grade_scale.length; i++) {
-      div.innerHTML += "<i style='background: " + color_scale[i] + "'></i> "
-      + grade_scale[i] + (grade_scale[i + 1] ? "&ndash;" + grade_scale[i + 1] + "<br>" : "+");
-    }
-    return legend_div;
+        for (var i = 0; i < grade_scale.length; i++) {
+        div.innerHTML += "<i style='background: " + color_scale[i] + "'></i> "
+        + grade_scale[i] + (grade_scale[i + 1] ? "&ndash;" + grade_scale[i + 1] + "<br>" : "+");
+        }
+        return legend_div;
   };
 
   map_legend.addTo(map_object);
+
+  d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json",
+    function(platedata) {
+      // Adding our geoJSON data, along with style information, to the tectonicplates
+      // layer.
+      L.geoJson(platedata, {
+        color: "purple",
+        weight: 2
+      })
+      .addTo(tectonic_Data);
+
+      // Then add the tectonicplates layer to the map.
+      tectonic_Data.addTo(map_object);
+    });
 
 });
