@@ -100,6 +100,6 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
     return legend_div;
   };
 
-  map_legend.addTo(map);
+  map_legend.addTo(map_object);
 
 });
