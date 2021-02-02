@@ -37,17 +37,17 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
     function getMarkerColor(depth) {
         switch (true) {
           case depth > 90:
-            return "#ea2c2c";
+            return "#ba1212";
           case depth > 70:
-            return "#ea822c";
+            return "#d16915";
           case depth > 50:
-            return "#ee9c00";
+            return "#e68a00";
           case depth > 30:
-            return "#eecc00";
+            return "#ccad00";
           case depth > 10:
-            return "#d4ee00";
+            return "#ffff33";
           default:
-            return "#98ee00";
+            return "#00b33c";
         }
     }
 
@@ -85,12 +85,12 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
 
         let grade_scale = [-10, 10, 30, 50, 70, 90];
         let color_scale = [
-            "#98ee00",
-            "#d4ee00",
-            "#eecc00",
-            "#ee9c00",
-            "#ea822c",
-            "#ea2c2c"
+            "#00b33c",
+            "#ffff33",
+            "#ccad00",
+            "#e68a00",
+            "#d16915",
+            "#ba1212"
         ];
 
     for (var i = 0; i < grade_scale.length; i++) {
