@@ -20,15 +20,15 @@ let map_object = L.map("mapid", {
 
 step1_graymap.addTo(map_object);
 
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"), function(data) {
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson", function(data) {
     
     function styleData(feature) {
         return {
             opacity: 1,
             fillOpacity: 1,
-            fillColor: getColor(feature.geometry.coordinates[2]),
+            fillColor: getMarkerColor(feature.geometry.coordinates[2]),
             color: "#000000",
-            radius: getRadius(feature.properties.mag),
+            radius: getMarkerRadius(feature.properties.mag),
             stroke: true,
             weight: 0.5
         };
@@ -36,18 +36,18 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
 
     function getMarkerColor(depth) {
         switch (true) {
-            case depth > 90:
-                return "#ea2c2c";
-              case depth > 70:
-                return "#ea822c";
-              case depth > 50:
-                return "#ee9c00";
-              case depth > 30:
-                return "#eecc00";
-              case depth > 10:
-                return "#d4ee00";
-              default:
-                return "#98ee00";
+          case depth > 90:
+            return "#ea2c2c";
+          case depth > 70:
+            return "#ea822c";
+          case depth > 50:
+            return "#ee9c00";
+          case depth > 30:
+            return "#eecc00";
+          case depth > 10:
+            return "#d4ee00";
+          default:
+            return "#98ee00";
         }
     }
 
@@ -102,4 +102,4 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
 
   map_legend.addTo(map);
 
-}
+});
