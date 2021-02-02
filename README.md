@@ -19,8 +19,19 @@ The USGS provides earthquake data in a number of different formats, updated ever
 
 I created a map using Leaflet that plotted all of the earthquakes from your data set based on their longitude and latitude.
 
-   * All of the data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
+* All of the data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
 
-   * I also included popups that provide additional information about the earthquake whenever a marker is clicked.
+* I also included popups that provide additional information about the earthquake whenever a marker is clicked.
 
-   * Last, I created a legend that provides context for the map data.
+* Last, I created a legend that provides context for the map data.
+
+
+### Leaflet Step 2: Bonus - More Data
+
+Everything in this step 2 can be found in the [`Leaflet-Step-2`](Leaflet-Step-2) folder.
+
+For this part of the project, the USGS wanted a second data set plotted onto my map that would illustrate the relationship between tectonic plates and seismic activity. So I pulled in a second data set from this site: and visualized alongside my original set of data used in Step 1. 
+
+* In addition, I added a number of base maps to choose from, as well as separated out our two different data sets into overlays that can be turned on and off independently.
+
+* Last, I added layer controls to the map.
