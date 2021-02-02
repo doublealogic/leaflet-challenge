@@ -13,4 +13,14 @@ First, the earthquake data set needs to be visualized. You can find everything i
 
 1. **Gather the data set**
 
+The USGS provides earthquake data in a number of different formats, updated every 5 minutes. I went ahead and visited the [USGS GeoJSON Feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) page and picked a data set to visualize. I was given a JSON representation of that data. Then I used the URL of this JSON to pull in the data for my visualization.
+
 2. **Import and Visualize the Data**
+
+I created a map using Leaflet that plotted all of the earthquakes from your data set based on their longitude and latitude.
+
+   * All of the data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
+
+   * I also included popups that provide additional information about the earthquake whenever a marker is clicked.
+
+   * Last, I created a legend that provides context for the map data.
